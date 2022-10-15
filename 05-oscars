@@ -1,0 +1,41 @@
+using System;
+
+namespace _05_Oscars___1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int capacity = int.Parse(Console.ReadLine());
+            int totalSum = 0;
+            int totalSeats = 0;
+
+            string command = Console.ReadLine();
+            while (command != "Movie time!")
+            {
+                int numberPeople = int.Parse(command);
+                totalSeats += numberPeople;
+
+                if (totalSeats > capacity)
+                {
+                    Console.WriteLine($"The cinema is full.");
+                    Console.WriteLine($"Cinema income - {totalSum} lv.");
+                    return;
+                }
+
+                if  (numberPeople % 3 == 0)
+                {
+                    totalSum += numberPeople * 5 - 5;
+                }
+                else
+                {
+                    totalSum += numberPeople * 5;
+                }
+                command = Console.ReadLine();
+            }
+
+            Console.WriteLine($"There are {capacity - totalSeats} seats left in the cinema.");
+            Console.WriteLine($"Cinema income - {totalSum} lv.");
+        }
+    }
+}
