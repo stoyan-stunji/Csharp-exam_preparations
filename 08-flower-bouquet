@@ -1,0 +1,42 @@
+using System;
+
+namespace _2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double budget = double.Parse(Console.ReadLine());
+
+            double love = double.Parse(Console.ReadLine());
+            double roses = double.Parse(Console.ReadLine());
+            double keys = double.Parse(Console.ReadLine());
+            double pictures = double.Parse(Console.ReadLine());
+            double lucks = double.Parse(Console.ReadLine());
+
+            double priceLove = love * 0.6;
+            double priceRoses = roses * 7.2;
+            double priceKeys = keys * 3.60;
+            double pricePictures = pictures * 18.2;
+            double priceLucks = lucks * 22;
+
+            double priceAll = priceLove + priceRoses + priceKeys + pricePictures + priceLucks;
+
+            if (love + roses + keys + pictures + lucks >= 25)
+            {
+                priceAll = priceAll - (priceAll * 0.35);
+            }
+
+            priceAll = priceAll - (priceAll * 0.1);
+
+            if (priceAll > budget)
+            {
+                Console.WriteLine($"Yes! {Math.Abs(priceAll - budget):f2} lv left.");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough money! {Math.Abs(priceAll - budget):f2} lv needed.");
+            }
+        }
+    }
+}
