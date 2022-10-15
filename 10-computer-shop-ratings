@@ -1,0 +1,53 @@
+using System;
+
+namespace _4
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double computers = double.Parse(Console.ReadLine());
+
+            double ratingAll = 0;
+            double salesAll = 0;
+
+            for (int i = 1; i <= computers; i++)
+            {
+                double input = double.Parse(Console.ReadLine());
+
+                double rating = input % 10;
+
+                ratingAll += rating;
+
+                double sales = input / 10; 
+
+                if (rating == 2)
+                {
+                    sales = Math.Round(sales * 0.0);
+                }
+                else if (rating == 3)
+                {
+                    sales = Math.Round(sales * 0.5);
+                }
+                else if (rating == 4)
+                {
+                    sales = Math.Round(sales * 0.7);
+                }
+                else if (rating == 5)
+                {
+                    sales = Math.Floor(sales * 0.85);
+                }
+                else if (rating == 6)
+                {
+                    sales = Math.Floor(sales * 1);
+                }
+
+                salesAll += sales;
+            }
+            Console.WriteLine($"{salesAll:f2}");
+            Console.WriteLine($"{(ratingAll / computers):f2}");
+        }
+
+
+    }
+}
