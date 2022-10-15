@@ -1,0 +1,77 @@
+using System;
+
+namespace _3
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double weight = double.Parse(Console.ReadLine());
+            string type = Console.ReadLine();
+            double distance = double.Parse(Console.ReadLine());
+
+            double priceKm = 0;
+            double advancement = 0;
+
+            if (type == "standard")
+            {
+                if (weight <= 1)
+                {
+                    priceKm = 0.03;
+                }
+                else if (weight > 1 && weight <= 10)
+                {
+                    priceKm = 0.05;
+                }
+                else if (weight > 10 && weight <= 40)
+                {
+                    priceKm = 0.10;
+                }
+                else if (weight > 40 && weight <= 90)
+                {
+                    priceKm = 0.15;
+                }
+                else if (weight > 90 && weight <= 150)
+                {
+                    priceKm = 0.20;
+                }
+            }
+            else if (type == "express")
+            {
+                if (weight <= 1)
+                {
+                    advancement = 0.8;
+                    priceKm = 0.03;
+                }
+                else if (weight > 1 && weight <= 10)
+                {
+                    advancement = 0.4;
+                    priceKm = 0.05;
+                }
+                else if (weight > 10 && weight <= 40)
+                {
+                    advancement = 0.05;
+                    priceKm = 0.10;
+                }
+                else if (weight > 40 && weight <= 90)
+                {
+                    advancement = 0.02;
+                    priceKm = 0.15;
+                }
+                else if (weight > 90 && weight <= 150)
+                {
+                    advancement = 0.01;
+                    priceKm = 0.20;
+                }
+            }
+
+            double adv = priceKm * advancement;
+            double adv2 = weight * adv;
+            double fullAdv = distance * adv2;
+
+            double price = priceKm * distance + fullAdv;
+
+            Console.WriteLine($"The delivery of your shipment with weight of {weight:f3} kg. would cost {price:f2} lv.");
+        }
+    }
+}
