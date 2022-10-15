@@ -1,0 +1,27 @@
+using System;
+
+namespace _1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double pfats = double.Parse(Console.ReadLine());
+            double pproteins = double.Parse(Console.ReadLine());
+            double pvaglehidarti = double.Parse(Console.ReadLine());
+            double calories = double.Parse(Console.ReadLine());
+            double pwater = double.Parse(Console.ReadLine());
+
+            double fats = ((pfats / 100) * calories) / 9;
+            double proteins = ((pproteins / 100) * calories) / 4;
+            double vaglehidrati = ((pvaglehidarti / 100) * calories) / 4;
+
+            double weight = fats + proteins + vaglehidrati;
+            double command = calories / weight;
+
+            double water = (((100 - pwater) / 100) * command);
+
+            Console.WriteLine($"{water:f4}");
+        }
+    }
+}
