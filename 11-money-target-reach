@@ -1,0 +1,70 @@
+using System;
+
+namespace _52
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            double target = double.Parse(Console.ReadLine());
+
+            double money = 0;
+
+            while (true)
+            {
+                string type = Console.ReadLine();
+
+                if (type == "closed")
+                {
+                    break;
+                }
+                else if (type == "haircut")
+                {
+                    string gender = Console.ReadLine();
+
+                    switch (gender)
+                    {
+                        case "mens":
+                            money += 15;
+                            break;
+                        case "ladies":
+                            money += 20;
+                            break;
+                        case "kids":
+                            money += 10;
+                            break;
+                    }
+                }
+                else if (type == "color")
+                {
+                    string paint = Console.ReadLine();
+
+                    switch (paint)
+                    {
+                        case "touch up":
+                            money += 20;
+                            break;
+                        case "full color":
+                            money += 30;
+                            break;
+                    }
+                }
+
+                if (money >= target)
+                {
+                    break;
+                }
+            }
+
+            if (money >= target)
+            {
+                Console.WriteLine($"You have reached your target for the day!");
+            }
+            else
+            {
+                Console.WriteLine($"Target not reached! You need {Math.Abs(money - target)}lv. more.");
+            }
+            Console.WriteLine($"Earned money: {money}lv.");
+        }
+    }
+}
