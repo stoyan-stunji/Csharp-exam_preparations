@@ -1,0 +1,86 @@
+using System;
+
+namespace _03_World_Snooker_Championship
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string stage = Console.ReadLine();
+            string ticketType = Console.ReadLine();
+            double ticketNumber = double.Parse(Console.ReadLine());
+            string picture = Console.ReadLine();
+
+            double ticketPrice = 0;
+
+            switch (stage)
+            {
+                case "Quarter final":
+                    switch (ticketType)
+                    {
+                        case "Standard":
+                            ticketPrice = 55.50;
+                            break;
+                        case "Premium":
+                            ticketPrice = 105.20;
+                            break;
+                        case "VIP":
+                            ticketPrice = 118.90;
+                            break;
+                    }
+                    break;
+
+                case "Semi final":
+                    switch (ticketType)
+                    {
+                        case "Standard":
+                            ticketPrice = 75.88;
+                            break;
+                        case "Premium":
+                            ticketPrice = 125.22;
+                            break;
+                        case "VIP":
+                            ticketPrice = 300.40;
+                            break;
+                    }
+                    break;
+
+                case "Final":
+                    switch (ticketType)
+                    {
+                        case "Standard":
+                            ticketPrice = 110.10;
+                            break;
+                        case "Premium":
+                            ticketPrice = 160.66;
+                            break;
+                        case "VIP":
+                            ticketPrice = 400;
+                            break;
+                    }
+                    break;
+
+            }
+
+            double price = ticketPrice * ticketNumber;
+
+            bool isPhotoFree = false;
+            if (price > 4000)
+            {
+                price *= 0.75;
+                isPhotoFree = true;
+            }
+            else if (price >= 2500)
+            {
+                price *= 0.9;
+            }
+
+            if (picture == "Y" && isPhotoFree == false)
+            {
+                price += 40 * ticketNumber;
+            }
+
+            Console.WriteLine($"{price:f2}");
+        }
+    }
+}
